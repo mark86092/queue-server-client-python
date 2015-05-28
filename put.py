@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 from multiprocessing.managers import BaseManager
 
 class QueueManager(BaseManager):
@@ -11,3 +12,7 @@ queue = m.get_queue()
 
 # do anything you want to put the item into queue
 # eg: queue.put('example')
+
+if __name__ == '__main__':
+    for i in range(10):
+        queue.put(i)

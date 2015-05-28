@@ -15,13 +15,18 @@ if __name__ == '__main__':
     queue = m.get_queue()
     
     while True:
-        item = queue.get()
         try:
-            pass ## do anything about your item
+            item = queue.get()
+        except KeyboardInterrupt: # Ctrl + C interrupt (i.e. want to exit)
+            break
+
+        ## do anything about your item
+        try:
+            print(item)
         except KeyboardInterrupt: # Ctrl + C interrupt (i.e. want to exit)
             # requeue your item, because fail to finish it
             queue.put(item)
             # break the while loop
             break
         except:
-            pass ## catch the exception, and handle it
+            pass ## catch the other exception, and handle it
